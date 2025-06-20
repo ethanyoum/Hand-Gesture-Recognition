@@ -11,5 +11,4 @@ from torch.utils.data import Dataset, DataLoader, random_split
 from torchvision import transforms
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
-
-%matplotlib inline
+import sys
