@@ -82,3 +82,12 @@ data_transforms = transforms.Compose([
 
 # Create dataset
 full_dataset = LeapGestRecogDataset(data_path=path, transform=data_transforms, img_size=IMG_SIZE)
+
+# Split the dataset into training and validation sets
+train_size = int(train_size * len(full_dataset))
+test_size = len(full_dataset) - train_size
+train_dataset, test_dataset = random_split(full_dataset, [train_size, test_size])
+
+# Create DataLoaders for training and validation sets
+train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers)
