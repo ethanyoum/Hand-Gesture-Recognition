@@ -8,7 +8,10 @@ inputs_try , labels_try = inputs_try.to(device), labels_try.to(device)
 model_resnet = model_resnet.to(device)
 outputs_try = model_resnet(inputs_try)
 
+# Specify loss function
 criterion = nn.CrossEntropyLoss()
+
+# Specify optimizer
 optimizer_resnet = optim.Adam(model_resnet.parameters(), lr = 0.001)
 
 resnet_train_losses, resnet_val_losses = train_model_with_loss_tracking(model_resnet, train_loader = train_loader,
