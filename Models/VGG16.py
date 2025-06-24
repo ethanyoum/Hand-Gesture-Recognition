@@ -14,7 +14,12 @@ num_classes = len(full_dataset.lookup)
 model_vgg.classifier[6] = nn.Linear(in_features=4096, out_features=num_classes)
 model_vgg = model_vgg.to(device)
 
+# Specify loss function
 criterion = nn.CrossEntropyLoss()
+
+# Specify learning rate
 lr = 0.001
+
+# Specify optimizer and epoch
 optimizer_vgg = torch.optim.Adam(model_vgg.classifier[6].parameters(),lr = lr)
 epochs = 5
